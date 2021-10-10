@@ -78,13 +78,14 @@ python -m pip install -r ${HOME}/requirements.txt && \
 chgrp -R 0 ${HOME}/ansible2.9 && \
 chmod -R g+rwX ${HOME}/ansible2.9 && \
 deactivate && \
-python -m virtualenv ${HOME}/ansible2.10 && \
-source ${HOME}/ansible2.10/bin/activate && \
-python -m pip install "ansible == 2.10.7" && \
+python -m virtualenv ${HOME}/ansible2.11 && \
+source ${HOME}/ansible2.11/bin/activate && \
+python -m pip install "ansible-core == 2.11.5" && \
 python -m pip install ansible-lint && \
+python -m pip install ansible-builder && \
 python -m pip install -r ${HOME}/requirements.txt && \
-chgrp -R 0 ${HOME}/ansible2.10 && \
-chmod -R g+rwX ${HOME}/ansible2.10 && \
+chgrp -R 0 ${HOME}/ansible2.11 && \
+chmod -R g+rwX ${HOME}/ansible2.11 && \
 deactivate 
 ENTRYPOINT ["/home/jboss/entrypoint.sh"]
 CMD tail -f /dev/null
