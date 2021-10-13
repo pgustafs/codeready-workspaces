@@ -1,0 +1,22 @@
+apiVersion: v2
+publisher: Red Hat
+name: redhat-ansible
+version: 0.4.5
+type: "VS Code extension"
+displayName: Ansible VS Code Extension
+title: Ansible extension
+description: "This extension adds language support for Ansible to VS Code."
+icon: "https://www.eclipse.org/che/images/logo-eclipseche.svg"
+repository: "https://github.com/ansible/vscode-ansible"
+category: Language
+spec:
+  containers:
+  - image: quay.io/pgustafs/crw-python38-ansible-rhel8
+    name: redhat-ansible
+    memoryLimit: '512M'
+    args:
+      - sh
+      - -c
+      - ${PLUGIN_REMOTE_ENDPOINT_EXECUTABLE}
+  extensions:
+  - https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.4.5/vspackage
