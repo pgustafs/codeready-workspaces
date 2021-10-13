@@ -8,6 +8,10 @@ $ cd codeready-workspaces/ansible/Dockerfiles/
 $ podman login registry.redhat.io
 $ buildah bud -t quay.io/pgustafs/crw-python38-ansible-rhel8 .
 $ buildah images
+REPOSITORY                                    TAG      IMAGE ID       CREATED       SIZE
+quay.io/pgustafs/crw-python38-ansible-rhel8   latest   073c6a1861d8   7 hours ago   442 MB
+$ podman login quay.io
+$ podman push quay.io/pgustafs/crw-python38-ansible-rhel8
 ```
 
 
