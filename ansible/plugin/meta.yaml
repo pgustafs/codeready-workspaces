@@ -19,4 +19,5 @@ spec:
       - -c
       - ${PLUGIN_REMOTE_ENDPOINT_EXECUTABLE}
   extensions:
-  - https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.4.5/vspackage
+  - 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.4.5/vspackage'
+  - 'https://github.com/microsoft/vscode-python/releases/download/2020.7.94776/ms-python-release.vsix'
