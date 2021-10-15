@@ -13,6 +13,9 @@ spec:
   containers:
   - image: quay.io/pgustafs/sidecar-python38-ansible-rhel8
     name: redhat-ansible
+    volumes:
+      - name: venv
+        mountPath: /home/user/.venv
     memoryLimit: '512M'
     env:
       - name: VSCODE_API_VERSION
