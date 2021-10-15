@@ -14,10 +14,9 @@ spec:
   - image: quay.io/pgustafs/sidecar-python38-ansible-rhel8
     name: redhat-ansible
     memoryLimit: '512M'
-    args:
-      - sh
-      - -c
-      - ${PLUGIN_REMOTE_ENDPOINT_EXECUTABLE}
+    env:
+      - name: VSCODE_API_VERSION
+        value: '1.52.0'
   extensions:
   - 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.4.5/vspackage'
   - 'https://github.com/microsoft/vscode-python/releases/download/2020.7.94776/ms-python-release.vsix'
