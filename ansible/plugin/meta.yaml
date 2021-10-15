@@ -11,7 +11,7 @@ repository: "https://github.com/ansible/vscode-ansible"
 category: Language
 spec:
   containers:
-  - image: quay.io/pgustafs/crw-python38-ansible-rhel8
+  - image: quay.io/pgustafs/sidecar-python38-ansible-rhel8
     name: redhat-ansible
     memoryLimit: '512M'
     args:
