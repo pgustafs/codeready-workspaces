@@ -55,7 +55,7 @@ RUN mkdir -p "${HOME}" && cd "${HOME}" && \
 
 COPY --chown=0:0 etc/entrypoint.sh /entrypoint.sh
 
-RUN mkdir /projects && chmod +x /entrypoint.sh \
+RUN mkdir /projects && chmod +x /entrypoint.sh && \
     # Change permissions to let any arbitrary user
     for f in "${HOME}" "/etc/passwd" "/projects"; do \
       echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
