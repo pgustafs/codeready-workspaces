@@ -38,5 +38,5 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
-        command: 'read -e -p \"Enter Role Name: \" NAME; echo $NAME'
+        command: 'read -e -p "Enter Role Name: " NAME; echo $NAME'
         component: ansible
