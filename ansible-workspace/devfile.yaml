@@ -12,7 +12,7 @@ components:
       python.globalModuleInstallation: true
       ansible.ansible.useFullyQualifiedCollectionNames: true
     type: chePlugin
-    reference: 'https://raw.githubusercontent.com/pgustafs/codeready-workspaces/main/ansible/plugin/meta.yaml'
+    reference: 'https://raw.githubusercontent.com/pgustafs/codeready-workspaces/main/plugins/redhat-ansible/meta.yaml'
     alias: redhat-ansible
   - mountSources: true
     memoryLimit: 512Mi
