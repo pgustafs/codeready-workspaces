@@ -4,7 +4,7 @@
 ```
 $ sudo dnf -y install podman buildah git
 $ git clone https://github.com/pgustafs/codeready-workspaces.git
-$ cd codeready-workspaces/ansible/Dockerfiles/
+$ cd codeready-workspaces/ansible-workspace/Dockerfiles/
 $ podman login registry.redhat.io
 $ buildah bud -t quay.io/pgustafs/crw-python38-ansible-rhel8 .
 $ buildah images
