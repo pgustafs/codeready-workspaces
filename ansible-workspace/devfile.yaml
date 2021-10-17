@@ -38,5 +38,5 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
-        command: 'read -e -p "Enter Role Name: " NAME; echo $NAME'
+        command: 'read -e -p "Enter Role Name: " NAME; source ${HOME}/.venv/bin/activate; ansible-galaxy init --role-skeleton=galaxy-role-skeleton/skeleton_empty $NAME'
         component: ansible
