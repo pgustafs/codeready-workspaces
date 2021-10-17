@@ -1,0 +1,81 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: python-django-demopam-dev-environment
+projects:
+  -
+    name: demopam
+    source:
+      type: git
+      location: 'git@gitlab.pgustafs.com:pgustafs/demopam.git'
+      branch: master
+components:
+  -
+    type: chePlugin
+    id: ms-python/python/latest
+  -
+    type: dockerimage
+    alias: python
+    image: quay.io/eclipse/che-python-3.8:ce0526f
+    memoryLimit: 512Mi
+    endpoints:
+      - name: 'django'
+        port: 7000
+    mountSources: true
+    volumes:
+      - name: venv
+        containerPath: /home/user/.venv
+commands:
+  -
+    name: install python dependencies
+    actions:
+      -
+        type: exec
+        component: python
+        command: '. ${HOME}/.venv/bin/activate && pip install -r requirements.txt && pip install debugpy'
+        workdir: '${CHE_PROJECTS_ROOT}/demopam'
+  - 
+    name: migrate
+    actions:
+      -
+        type: exec
+        component: python
+        command: '. ${HOME}/.venv/bin/activate && python manage.py migrate'
+        workdir: '${CHE_PROJECTS_ROOT}/demopam'
+  - 
+    name: run server
+    actions:
+      -
+        type: exec
+        component: python
+        command: '. ${HOME}/.venv/bin/activate && export DEBUG_MODE=False && python manage.py runserver 0.0.0.0:7000'
+        workdir: '${CHE_PROJECTS_ROOT}/demopam'
+  - 
+    name: run server in debug mode
+    actions:
+      -
+        type: exec
+        component: python
+        command: '. ${HOME}/.venv/bin/activate &&  export DEBUG_MODE=True && python manage.py runserver 0.0.0.0:7000 --noreload --nothreading'
+        workdir: '${CHE_PROJECTS_ROOT}/demopam'
+  - 
+    name: debug
+    actions:
+    - type: vscode-launch
+      referenceContent: >
+        {
+        "version": "0.2.0",
+        "configurations": [
+          {
+            "name": "Python: Remote Attach",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "0.0.0.0",
+            "pathMappings": [
+              {
+                  "localRoot": "${workspaceFolder}",
+                  "remoteRoot": "${workspaceFolder}"
+              }
+            ]
+          }]
+        }
