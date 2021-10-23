@@ -54,6 +54,7 @@ RUN mkdir -p "${HOME}" && cd "${HOME}" && \
     mv "${HOME}"/.venv "${HOME}"/.venv-tmp
 
 COPY --chown=0:0 etc/entrypoint.sh /entrypoint.sh
+COPY --chown=0:0 etc/ansible.cfg /home/user/.ansible.cfg
 
 RUN mkdir /projects && chmod +x /entrypoint.sh && \
     # Change permissions to let any arbitrary user
