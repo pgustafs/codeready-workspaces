@@ -25,7 +25,7 @@ RUN microdnf install -y yum && \
     yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
     yum -y -q module reset nodejs && \
     yum -y -q module enable nodejs:$NODEJS_VERSION && \
-    MODEJS_PKGS="nodejs npm nodejs-nodemon nss_wrapper" && ln -s /usr/lib/node_modules/nodemon/bin/nodemon.js /usr/bin/nodemon && \
+    NODEJS_PKGS="nodejs npm nodejs-nodemon nss_wrapper" && ln -s /usr/lib/node_modules/nodemon/bin/nodemon.js /usr/bin/nodemon && \
     yum -y -q remove $NODEJS_PKGS && \
     yum -y -q install --setopt=tsflags=nodocs $NODEJS_PKGS && rpm -V $NODEJS_PKGS && \
     #yum -y -q clean all --enablerepo='*' && \
