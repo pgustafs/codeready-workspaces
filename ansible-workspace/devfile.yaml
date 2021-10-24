@@ -42,3 +42,15 @@ commands:
         type: exec
         command: 'read -e -p "Enter Role Name: " NAME; source ${HOME}/.venv/bin/activate; ansible-galaxy init --role-skeleton=galaxy-role-skeleton/skeleton_empty $NAME'
         component: ansible
+  - name: Add Automation Hub Token
+    actions:
+      - workdir: '${HOME}'
+        type: exec
+        command: 'read -e -p "Enter Token: " TOKEN; sed -i s/REPLACEME/$TOKEN/ .ansible.cfg'
+        component: ansible
+  - name: Install Collection
+    actions:
+      - workdir: '${HOME}'
+        type: exec
+        command: 'read -e -p "Enter Collection Name: " COLLECTION; source ${HOME}/.venv/bin/activate; ansible-galaxy collection install $COLLECTION'
+        component: ansible
