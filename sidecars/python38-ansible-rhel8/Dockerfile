@@ -15,19 +15,28 @@ USER root
 ENV HOME=/home/user \
     PATH=/usr/bin:$PATH \
     PYTHON_VERSION="3.8" \
+    NODEJS_VERSION=12 \
     MANPATH="/usr/share/man:${MANPATH}"
 
 RUN microdnf install -y yum && \
     microdnf clean all && \
     INSTALL_PKGS="bash tar gzip unzip which shadow-utils findutils wget curl \
-    sudo git procps-ng bzip2" && \
+    sudo git procps-ng bzip2 java-1.8.0-openjdk java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless" && \
     yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
+    yum -y -q module reset nodejs && \
+    yum -y -q module enable nodejs:$NODEJS_VERSION && \
+    MODEJS_PKGS="nodejs npm nodejs-nodemon nss_wrapper" && ln -s /usr/lib/node_modules/nodemon/bin/nodemon.js /usr/bin/nodemon && \
+    yum -y -q remove $NODEJS_PKGS && \
+    yum -y -q install --setopt=tsflags=nodocs $NODEJS_PKGS && rpm -V $NODEJS_PKGS && \
+    #yum -y -q clean all --enablerepo='*' && \
     PYTHON_PKGS="python38 python38-devel python3-virtualenv python38-setuptools python38-setuptools-wheel" && \
     yum -y module reset python38 && \
     yum -y module enable python38:${PYTHON_VERSION} && \
     yum -y --setopt=tsflags=nodocs install $PYTHON_PKGS && \
     yum -y update && \
-    yum -y -q clean all && rm -rf /var/cache/yum
+    yum -y -q clean all --enablerepo='*' && rm -rf /var/cache/yum && \
+    # node stuff
+    ln -s /usr/bin/node /usr/bin/nodejs
 
 RUN \
     echo "updates pip" && \
