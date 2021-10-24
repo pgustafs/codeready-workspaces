@@ -1,7 +1,7 @@
 apiVersion: v2
 publisher: Red Hat
 name: redhat-ansible
-version: 0.5.0
+version: 0.4.5
 type: "VS Code extension"
 displayName: Ansible VS Code Extension
 title: Ansible extension
@@ -21,6 +21,6 @@ spec:
       - name: VSCODE_API_VERSION
         value: '1.52.0'
   extensions:
-  - 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.5.0/vspackage'
+  - 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.4.5/vspackage'
   - 'https://github.com/microsoft/vscode-python/releases/download/2020.7.94776/ms-python-release.vsix'
-  - 'https://open-vsx.org/api/redhat/vscode-yaml/0.14.0/file/redhat.vscode-yaml-0.14.0.vsix'
+  #- 'https://open-vsx.org/api/redhat/vscode-yaml/0.14.0/file/redhat.vscode-yaml-0.14.0.vsix'
