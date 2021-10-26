@@ -35,6 +35,13 @@ if [ ! -f "${HOME}"/.venv/bin/activate ]; then
   mv "${HOME}"/.venv-tmp/* "${HOME}"/.venv
 fi
 
+# Setup .ansible in the 'ansible' volume that should be mounted in HOME/.ansible
+mkdir -p "${HOME}"/.ansible
+if [ ! -f "${HOME}"/.ansible/ansible.cfg ]; then
+  echo "${HOME}"/.ansible is empty, moving files from "${HOME}"/.ansible-tmp/
+  mv "${HOME}"/.ansible-tmp/* "${HOME}"/.ansible
+fi
+
 # shellcheck source=/dev/null
 source "${HOME}"/.venv/bin/activate
 exec "$@"
