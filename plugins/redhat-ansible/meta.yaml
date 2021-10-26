@@ -12,7 +12,7 @@ category: Language
 spec:
   containers:
   - image: quay.io/pgustafs/sidecar-python38-ansible-rhel8
-    name: redhat-ansible-extension-
+    name: redhat-ansible-extension
     volumes:
       - name: venv
         mountPath: /home/user/.venv
