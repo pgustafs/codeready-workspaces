@@ -22,6 +22,8 @@ spec:
     env:
       - name: VSCODE_API_VERSION
         value: '1.52.0'
+      - name: ANSIBLE_CONFIG
+        value: '/home/user/.ansible/ansible.cfg'
   extensions:
   - 'https://marketplace.visualstudio.com/_apis/public/gallery/publishers/redhat/vsextensions/ansible/0.4.5/vspackage'
   - 'https://github.com/microsoft/vscode-python/releases/download/2020.7.94776/ms-python-release.vsix'
