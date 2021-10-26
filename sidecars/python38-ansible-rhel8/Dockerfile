@@ -62,7 +62,8 @@ RUN mkdir -p "${HOME}" && cd "${HOME}" && \
     source .venv/bin/activate && \
     pip install -U pylint ipykernel jupyter ansible ansible-lint && \
     python -m ipykernel install --name=.venv && \
-    mv "${HOME}"/.venv "${HOME}"/.venv-tmp
+    mv "${HOME}"/.venv "${HOME}"/.venv-tmp && \
+    mkdir .ansible-tmp
 
 RUN mkdir /projects && \
     # Change permissions to let any arbitrary user
