@@ -12,10 +12,12 @@ category: Language
 spec:
   containers:
   - image: quay.io/pgustafs/sidecar-python38-ansible-rhel8
-    name: redhat-ansible
+    name: redhat-ansible-extension-
     volumes:
       - name: venv
         mountPath: /home/user/.venv
+      - name: ansible
+        mountPath: /home/user/.ansible
     memoryLimit: '512M'
     env:
       - name: VSCODE_API_VERSION
