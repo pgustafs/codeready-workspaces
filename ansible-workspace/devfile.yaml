@@ -20,17 +20,22 @@ components:
       ansible.ansible.useFullyQualifiedCollectionNames: true
     type: chePlugin
     reference: 'https://raw.githubusercontent.com/pgustafs/codeready-workspaces/main/plugins/redhat-ansible/meta.yaml'
-    alias: redhat-ansible
+    alias: redhat-ansible-extension-
   - mountSources: true
     memoryLimit: 512Mi
     type: dockerimage
-    alias: ansible
-    image: quay.io/pgustafs/crw-python38-ansible-rhel8
     volumes:
       - name: venv
         containerPath: /home/user/.venv
+      - name: ansible
+        containerPath: /home/user/.ansible
+    alias: ansible
+    image: quay.io/pgustafs/crw-python38-ansible-rhel8
+    env:
+      - value: /home/user/.ansible/ansible.cfg
+        name: ANSIBLE_CONFIG
 commands:
-  - name: Ansible Virtual Env Terminal 
+  - name: Ansible Virtual Env Terminal
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
@@ -44,9 +49,9 @@ commands:
         component: ansible
   - name: Add Automation Hub Token
     actions:
-      - workdir: '${HOME}'
+      - workdir: '${HOME}/.ansible'
         type: exec
-        command: 'read -e -p "Enter Token: " TOKEN; sed -i s/REPLACEME/$TOKEN/ .ansible.cfg'
+        command: 'read -e -p "Enter Token: " TOKEN; sed -i s/REPLACEME/$TOKEN/ ansible.cfg'
         component: ansible
   - name: Install Collection
     actions:
