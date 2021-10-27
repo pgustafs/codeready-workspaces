@@ -7,7 +7,7 @@ Open `File -> Settings -> Open Preferences` and search for `quickSuggestions` cl
 "editor.quickSuggestions": {
     "other": true,
     "comments": false,
-    "strings": true
+    "strings": true           <-- default value is 'false'
 },
 ```
 Also you might like to set identation settings for “ansible” language:
