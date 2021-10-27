@@ -18,7 +18,12 @@ Also you might like to set identation settings for “ansible” language:
     "editor.insertSpaces": true
 },
 ```
-
+Also I use `ansible-jinja` for templates files
+```json
+"files.associations": {
+       "*.j2": "ansible-jinja" 
+},
+```
 
 
 
