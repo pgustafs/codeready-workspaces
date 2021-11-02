@@ -35,7 +35,7 @@ components:
       - value: /home/user/.ansible/ansible.cfg
         name: ANSIBLE_CONFIG
 commands:
-  - name: Ansible Virtual Env Terminal
+  - name: Ansible Terminal (Virtual Env)
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
@@ -45,17 +45,17 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
-        command: 'read -e -p "Enter Role Name: " NAME; source ${HOME}/.venv/bin/activate; ansible-galaxy init --role-skeleton=galaxy-role-skeleton/skeleton_empty $NAME'
+        command: 'read -e -p "Enter Role Name: " NAME; source ${HOME}/.venv/bin/activate; ansible-galaxy init --role-skeleton=galaxy-role-skeleton/skeleton_empty $NAME && exit'
         component: ansible
   - name: Add Automation Hub Token
     actions:
       - workdir: '${HOME}/.ansible'
         type: exec
-        command: 'read -e -p "Enter Token: " TOKEN; sed -i s/REPLACEME/$TOKEN/ ansible.cfg'
+        command: 'read -e -p "Enter Token: " TOKEN; sed -i s/REPLACEME/$TOKEN/ ansible.cfg && exit'
         component: ansible
   - name: Install Collection
     actions:
       - workdir: '${HOME}'
         type: exec
-        command: 'read -e -p "Enter Collection Name: " COLLECTION; source ${HOME}/.venv/bin/activate; ansible-galaxy collection install $COLLECTION'
+        command: 'read -e -p "Enter Collection Name: " COLLECTION; source ${HOME}/.venv/bin/activate; ansible-galaxy collection install $COLLECTION && exit'
         component: ansible
