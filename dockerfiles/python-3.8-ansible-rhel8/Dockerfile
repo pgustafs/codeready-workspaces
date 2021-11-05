@@ -50,7 +50,7 @@ RUN \
 RUN mkdir -p "${HOME}" && cd "${HOME}" && \
     python -m venv .venv && \
     source .venv/bin/activate && \
-    pip install -U pylint ansible ansible-lint requests requests-oauthlib kubernetes && \
+    pip install -U pylint ansible ansible-lint argcomplete requests requests-oauthlib kubernetes openshift awxkit && \
     mv "${HOME}"/.venv "${HOME}"/.venv-tmp && \
     mkdir .ansible-tmp
 
